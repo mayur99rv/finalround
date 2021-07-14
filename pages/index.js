@@ -4,7 +4,7 @@ import Loader from "../components/Loader";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Loader show={true}></Loader>
+      <Loader show={false}></Loader>
     </div>
   );
 }
