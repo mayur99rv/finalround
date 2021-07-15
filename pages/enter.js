@@ -28,10 +28,11 @@ const EnterPage = () => {
   );
 };
 
+// Sign in component
 function SignInButton() {
   const signInWithGoogle = async () => {
     const ent = await auth.signInWithPopup(googleAuthProvider);
-    console.log(ent);
+    // console.log(ent);
   };
   return (
     <button className="btn-google" onClick={signInWithGoogle}>
@@ -41,16 +42,19 @@ function SignInButton() {
   );
 }
 
+// signout component
 function SignOutButton() {
   return <button onClick={() => auth.signOut()}>Sign Out</button>;
 }
 
+// username form/checker component
 function UsernameForm() {
   const [formValue, setFormValue] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const { user, username } = useContext(UserContext);
+
   const onChange = (e) => {
     const val = e.target.value.toLowerCase();
     const re = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
@@ -61,9 +65,10 @@ function UsernameForm() {
       setLoading(false);
       setIsValid(false);
     }
+
     if (re.test(val)) {
       setFormValue(val);
-      setLoading(true);
+      setLoading(true); // to check asynchronously in the database
       setIsValid(false);
     }
 
@@ -83,7 +88,7 @@ function UsernameForm() {
       if (username.length >= 3) {
         const ref = firestore.doc(`usernames/${username}`);
         const { exists } = await ref.get();
-        console.log("firestore read executed!");
+        // console.log("firestore read executed!");
         setIsValid(!exists);
         setLoading(false);
       }
