@@ -31,8 +31,7 @@ const EnterPage = () => {
 // Sign in component
 function SignInButton() {
   const signInWithGoogle = async () => {
-    const ent = await auth.signInWithPopup(googleAuthProvider);
-    // console.log(ent);
+    await auth.signInWithPopup(googleAuthProvider);
   };
   return (
     <button className="btn-google" onClick={signInWithGoogle}>
@@ -109,6 +108,7 @@ function UsernameForm() {
       username: formValue,
       photoURL: user.photoURL,
       displayName: user.displayName,
+      uid: user.uid,
     });
     batch.set(usernameDoc, { uid: user.uid });
 
