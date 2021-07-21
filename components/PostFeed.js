@@ -5,7 +5,7 @@ import React from "react";
 const PostFeed = ({ posts, admin = false }) => {
   return posts.length > 0
     ? posts.map((post) => {
-        console.log("inside", post, admin);
+        // console.log("inside", post, admin);
         return <PostItem post={post} key={post.slug} admin={admin} />;
       })
     : null;
@@ -16,11 +16,8 @@ export default PostFeed;
 
 function PostItem({ post, admin = false }) {
   // Naive method to calc word count and read time
-  const wordCount = post.content.trim().split(/\s+/g).length;
+  const wordCount = post?.content.trim().split(/\s+/g).length;
   const minutesToRead = (wordCount / 100 + 1).toFixed(0);
-  {
-    console.log("inside postitem");
-  }
 
   return (
     <div className="card">

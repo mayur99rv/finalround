@@ -35,10 +35,10 @@ export async function getServerSideProps({ params, query }) {
 
   if (userDoc) {
     user = userDoc.data();
-    console.log(user);
+    // console.log(user);
     const postsQuery = await userDoc.ref
       .collection("posts")
-      // .where("published", "==", true)
+      .where("published", "==", true)
       .orderBy("createdAt", "desc")
       .limit(5)
       .get();
@@ -47,7 +47,7 @@ export async function getServerSideProps({ params, query }) {
     //   .where("published", "==", true)
     //   .orderBy("createdAt", "desc")
     //   .limit(5);
-    console.log(postsQuery);
+    // console.log(postsQuery);
     posts = postsQuery.docs.map(postToJSON);
 
     // posts = (await postsQuery.get()).docs.map(postToJSON);

@@ -5,19 +5,19 @@ import { useState } from "react";
 import PostFeed from "../components/PostFeed";
 import { firestore, fromMillis, postToJSON } from "../lib/firebase";
 // Max post to query per page
-const LIMIT = 10;
+const LIMIT = 1;
 
 export async function getServerSideProps(context) {
   const postsQuery = await firestore
     .collectionGroup("posts")
-    // .where("published", "==", true)
+    .where("published", "==", true)
     .orderBy("createdAt", "desc")
-    .limit(LIMIT)
-    .get();
-  const posts = postsQuery.docs.map(postToJSON);
-  console.log(posts);
+    .limit(LIMIT);
+  // .get();
+  // const posts = postsQuery.docs.map(postToJSON);
+  // console.log(posts);
 
-  // const posts = (await postsQuery.get()).docs.map(postToJSON);
+  const posts = (await postsQuery.get()).docs.map(postToJSON);
 
   return {
     props: { posts }, // will be passed to the page component as props
@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
 
 export default function Home(props) {
   const [posts, setPosts] = useState(props.posts);
-  console.log(posts);
+  // console.log(posts);
   const [loading, setLoading] = useState(false);
 
   const [postsEnd, setPostsEnd] = useState(false);
