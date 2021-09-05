@@ -207,6 +207,11 @@ button.btn-logo {
 
 }
 
+.btn-logo img{
+  width: 30px;
+  height: 30px;
+}
+
 /* Cards */
 
 .card {
