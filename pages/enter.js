@@ -2,8 +2,9 @@
 import debounce from "lodash.debounce";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { UserContext } from "../lib/context";
+import router, { useRouter } from "next/router";
 import { auth, firestore, googleAuthProvider } from "../lib/firebase";
-
+import Metatags from "../components/Metatags";
 const EnterPage = () => {
   const { user, username } = useContext(UserContext);
   // 1. User signed out <SignInButton/>
@@ -12,6 +13,7 @@ const EnterPage = () => {
 
   return (
     <main>
+      <Metatags title="Enter" description="Sign up for this amazing app!" />
       {user ? (
         !username ? (
           <>
@@ -33,11 +35,20 @@ function SignInButton() {
   const signInWithGoogle = async () => {
     await auth.signInWithPopup(googleAuthProvider);
   };
+  const signInWithEmail = () => {
+    router.push("/login");
+  };
   return (
-    <button className="btn-google" onClick={signInWithGoogle}>
-      <img src={"./google.png"} width="30px" alt="google-logo" />
-      Sign In With Google
-    </button>
+    <>
+      <button className="btn-google" onClick={signInWithEmail}>
+        {/* <img src={"./google.png"} width="30px" alt="google-logo" /> */}
+        Sign In With Email
+      </button>
+      <button className="btn-google" onClick={signInWithGoogle}>
+        <img src={"./google.png"} width="30px" alt="google-logo" />
+        Sign In With Google
+      </button>
+    </>
   );
 }
 
@@ -104,12 +115,15 @@ function UsernameForm() {
 
     // commit both docs together as a batch write
     const batch = firestore.batch();
+
+    //this write happens in user collection
     batch.set(userDoc, {
       username: formValue,
       photoURL: user.photoURL,
       displayName: user.displayName,
       uid: user.uid,
     });
+    //this happens in usernames collection
     batch.set(usernameDoc, { uid: user.uid });
 
     await batch.commit();

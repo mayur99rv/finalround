@@ -42,12 +42,7 @@ export async function getServerSideProps({ params, query }) {
       .orderBy("createdAt", "desc")
       .limit(5)
       .get();
-    // const postsQuery = firestore
-    //   .collection(`users/${user.uid}/posts`)
-    //   .where("published", "==", true)
-    //   .orderBy("createdAt", "desc")
-    //   .limit(5);
-    // console.log(postsQuery);
+
     posts = postsQuery.docs.map(postToJSON);
 
     // posts = (await postsQuery.get()).docs.map(postToJSON);

@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/link-passhref */
 import Link from "next/link";
 import React from "react";
 
 const PostFeed = ({ posts, admin = false }) => {
-  return posts.length > 0
+  return posts
     ? posts.map((post) => {
         // console.log("inside", post, admin);
         return <PostItem post={post} key={post.slug} admin={admin} />;
@@ -23,7 +24,14 @@ function PostItem({ post, admin = false }) {
     <div className="card">
       <Link href={`/${post.username}`}>
         <a>
-          <strong>By @{post.username} </strong>
+          <strong>
+            By @{post.username}
+            <img
+              src={post.photoURL || "/hacker.png"}
+              alt="user-img"
+              className="card-img"
+            />
+          </strong>
         </a>
       </Link>
       <Link href={`/${post.username}/${post?.slug}`}>

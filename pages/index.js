@@ -1,9 +1,10 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Loader from "../components/Loader";
 import { useState } from "react";
 import PostFeed from "../components/PostFeed";
 import { firestore, fromMillis, postToJSON } from "../lib/firebase";
+import Metatags from "../components/Metatags";
+
 // Max post to query per page
 const LIMIT = 1;
 
@@ -59,19 +60,23 @@ export default function Home(props) {
   };
 
   return (
-    <main>
-      <div className="card card-info">
-        <h2>💡 Next.js + Firebase - The Full Course</h2>
+    <main className="">
+      <Metatags
+        title="Home Page"
+        description="Get the latest posts on our site"
+      />
+      <div className="card card-info ">
+        <h2>💡Made using Next.js + 🔥Firebase + ❄React.js </h2>
         <p>
-          Welcome! This app is built with Next.js and Firebase and is loosely
-          inspired by Dev.to.
+          Welcome! This webapp is built by Mayur R vaswani for UEM final round.
         </p>
         <p>
-          Sign up for an 👨‍🎤 account, ✍️ write posts, then 💞 heart content
-          created by other users. All public content is server-rendered and
-          search-engine optimized.
+          Sign up for an 👨‍🎤 account, ✍️ write posts, then 💞 heart or 💟 Comment
+          content created by other users. All public content is server-rendered
+          and search-engine optimized.
         </p>
       </div>
+      <h2>Posts</h2>
       <PostFeed posts={posts} admin={false} />
 
       {!loading && !postsEnd && (

@@ -7,14 +7,31 @@ body {
 } */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 
-:root {
+.light {
   --color-bg: #eef0f1;
   --color-text: #08090a;
   --color-blue: #3b49df;
   --color-red: #df3b3b;
   --color-green: #3bdf72;
   --color-gray: #b5bdc4;
+  --color-nav: white;
 }
+
+:root{
+  --color-bg: #0D1117;
+  --color-text: #eaebec;
+  --color-blue: #7132e6;
+  --color-red: #df3b3b;
+  --color-green: #42358a;
+  --color-gray: #252525;
+  --color-nav:#161B22;
+  --color-card:#161B22;
+  --color-logo: #eeebec;
+  --color-logo-text: #19191a;
+  --color-text-area: #211a34;
+  --color-text-color: #eeeeee;
+}
+
 html,
 body {
   padding: 0;
@@ -28,7 +45,7 @@ body {
 
 
 main {
-  padding: 1rem 10vw;
+  padding: 1rem 12.5vw;
 }
 
 h1 { font-size: 2rem; }
@@ -54,6 +71,10 @@ input {
   font-size: 1.5rem;
   width: 100%;
   padding: 5px 10px;
+  border: 0.5px solid rgba(185, 185, 185, 0.123);
+  background-color: var(--color-text-area);
+  color: var(--color-text-color);
+  border-radius: 5px;
 }
 
 fieldset {
@@ -71,7 +92,7 @@ code {
 .navbar {
   height: 70px;
   width: 100%;
-  background: white;
+  background: var(--color-nav);
   color: var(--colors-text);
   position: fixed;
   top: 0;
@@ -123,6 +144,10 @@ code {
 }
 
 @media only screen and (max-width: 768px) {
+  main {
+    padding: 1rem 7.5vw;
+  }
+ 
   button {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
@@ -143,21 +168,28 @@ button[disabled]{
 button.btn-blue {
   background-color: var(--color-blue);
   color: white;
+  border:none;
 }
 
 button.btn-red {
   background-color: var(--color-red);
   color: white;
+  border:none;
+
 }
 
 button.btn-green {
   background-color: var(--color-green);
   color: white;
+  border:none;
+
 }
 
 button.btn-google {
-  background-color: white;
+  background-color: var(--color-nav);
   color: var(--color-text);
+  border:none;
+
 }
 
 .btn-google img {
@@ -166,25 +198,77 @@ button.btn-google {
 }
 
 button.btn-logo {
-  background-color: var(--color-text);
-  color: white;
+  background-color: var(--color-logo);
+  color: var(--color-logo-text);
   text-transform: uppercase;
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
+  border:none;
+
 }
 
 /* Cards */
 
 .card {
-  padding: 2rem;
+  padding: 2rem 0 1rem 0.5rem;
   margin: 1rem 0;
-  background-color: white;
+  background-color: var(--color-card);
   border: 1px solid var(--color-gray);
+  border-top: none;
   border-radius: 8px;
+  /* border-top-left-radius: 0; */
+  /* border-top-right-radius: 0; */
+  position: relative;
+}
+.inside{
+  margin-top: 0;
+}
+ .cover{
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-card);
+}
+.cover img{
+  width: 100%;
+  border-radius:10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.card .card-title{
+  text-align: center;
+  font-size: 3em;
+  margin-top: 0;
+}
+.card .text{
+  padding-left: 2rem;
+  font-size: 1rem;
+}
+.card span.text-sm{
+text-align: right;
+width: 100%;
+display: block;
+padding-right: 2rem;
+margin-top: 0;
+/* border: 1px solid red; */
+}
+
+.card h2{
+  padding-left: 60px;
+  margin-top: 0.5rem;
+}
+.card-info h2{
+  padding-left: 0;
+}
+.card a strong{
+  padding-left: 60px;
+  position: relative;
+  color:  var(--color-blue);
 }
 
 .card footer {
   display: flex;
+  padding: 0 1rem 0 60px;
 }
 
 .card-img-center {
@@ -194,7 +278,16 @@ button.btn-logo {
   border-radius: 50%;
   max-width: 150px;
 }
-
+.card-img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(10%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 .card-info {
   color: white;
   background: var(--color-blue);
@@ -267,3 +360,56 @@ input[type="file"] {
 }
 
 .hidden { display:  none; }
+
+.add-comment{
+  width: 80%;
+  margin: 0 auto;
+  border-top: 1px solid rgba(228, 226, 226, 0.342);
+}
+.begin-comms{
+  padding: 0;
+  margin-bottom: 0;
+  padding-top: 1rem;
+  font-size: 2rem;
+  border-top: 1px solid rgba(228, 226, 226, 0.342);
+}
+.comment-card{
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-gray);
+  border-radius: 8px;
+
+}
+.comment-card h3{
+  display: block;
+  /* border: 1px solid red; */
+  margin: 0.75rem 0;
+  font-size: 1.2rem;
+  font-weight: 500; 
+}
+.comment-card h2 span{
+  font-size: 0.7em;
+  font-weight: 500;
+  opacity: 0.75;
+}
+.comment-card h2{
+  margin-top: 0;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+.login span{
+  color: yellow;
+  cursor: pointer;
+}
+.login p.errorMsg{
+  color: red;
+}
