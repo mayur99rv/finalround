@@ -19,6 +19,6 @@
     "react-hot-toast": "^2.0.0",
     "react-markdown": "^7.0.1",
     "remark-gfm": "^2.0.0"
-  },
+  }
  
 }
