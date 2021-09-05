@@ -21,7 +21,9 @@ const Navbar = () => {
       <ul>
         <li>
           <Link href="/">
-            <button className="btn-logo">BlogIt</button>
+            <button className="btn-logo">BlogIt
+     <img src="/home.png" alt="home" />
+    </button>
           </Link>
         </li>
 
