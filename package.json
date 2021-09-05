@@ -6,11 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-<<<<<<< HEAD
     "lint": "next lint"
-=======
-     "lint": "next lint"
->>>>>>> b001eb0c6062967b2d77e451d673418d148fe53e
   },
   "dependencies": {
     "firebase": "^8.7.1",
