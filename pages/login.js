@@ -7,7 +7,7 @@ import { auth, firestore, googleAuthProvider } from "../lib/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function LoginPage() {
-  const { user, username } = useContext(UserContext);
+//   const { user, username } = useContext(UserContext);
 
   const [euser, setEuser] = useState("");
   const [email, setEmail] = useState("");
@@ -61,11 +61,14 @@ export default function LoginPage() {
     auth.signOut();
   };
   const authListener = () => {
-    // const [user] = useAuthState(auth);
-    if (user) {
-      clearInputs();
-      setEuser(user);
-    } else setEuser(null);
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        clearInputs();
+        setEuser(user);
+        router.push("/enter");
+        console.log(euser);
+      } else setEuser("");
+    });
   };
 
   useEffect(() => {
@@ -74,7 +77,7 @@ export default function LoginPage() {
   return (
     <>
       {euser ? (
-        router.push("/enter")
+        " "
       ) : (
         <div className="login">
           <Login
