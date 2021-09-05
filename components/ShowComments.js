@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/link-passhref */
-import { firestore, auth, increment, postToJSON } from "../lib/firebase";
+import { firestore, auth, increment, postToJSON } from "@lib/firebase";
 import { useDocument } from "react-firebase-hooks/firestore";
 import Link from "next/link";
 
