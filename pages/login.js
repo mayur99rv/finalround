@@ -114,7 +114,7 @@ const Login = (props) => {
   return (
     <section className="login">
       <div className="login-container">
-        <label htmlFor="">Username </label>
+        <label htmlFor="">Email: </label>
         <input
           type="text"
           autoFocus
@@ -123,7 +123,7 @@ const Login = (props) => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <p className="errorMsg">{emailError}</p>
-        <label htmlFor="">Password </label>
+        <label htmlFor="">Password: </label>
         <input
           type="password"
           autoFocus
