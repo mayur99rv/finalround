@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { firestore, auth, storage, STATE_CHANGED } from "@lib/firebase";
-import Loader from "@Loader";
+import Loader from "./Loader";
 import toast from "react-hot-toast";
 
 // Uploads images to Firebase Storage
