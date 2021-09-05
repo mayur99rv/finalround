@@ -73,7 +73,7 @@ export default function Home(props) {
         <p>
           Sign up for an 👨‍🎤 account, ✍️ write posts, then 💞 heart or 💟 Comment
           content created by other users. All public content is server-rendered
-          and search-engine optimized.
+          and new posts are shown first in the order.
         </p>
       </div>
       <h2>Posts</h2>
